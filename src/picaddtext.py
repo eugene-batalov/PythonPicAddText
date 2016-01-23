@@ -79,8 +79,9 @@ for filename in glob('*.jpg'):
     font = ImageFont.truetype("MyriadPro-Bold.otf", 42)
     id = str(int(filename[:-4]))
 #    print(int(id))
-    if(int(filename[:-4]) < 100): id = "0" + id
-    draw.text((17, 35), id, (0,0,0), font=font)#(255,255,255),font=font)
+    if(int(filename[:-4]) < 10): id = "00" + id
+    elif(int(filename[:-4]) < 100): id = "0" + id
+    draw.text((17, 35), id, (255,0,0), font=font)#(255,255,255),font=font)
     updated_filename = id + '_updated.jpg'
     img.save(updated_filename)
     update_blob(id, updated_filename)
